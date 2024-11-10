@@ -154,11 +154,13 @@ express_app.post("/createpostreply", async (req, res) => {
 		if (("postID" in req.body) && ("replyBody" in req.body)) {
 			let fnd = await Post.findOne({ id: req.body.postID });
 			if (fnd) {
+				let curDate = new Date();
+
 				let newFnd = {
 					id: fnd.id,
 					title: fnd.title,
 					author: fnd.author,
-					created: fnd.created,
+					created: curDate,
 					messages: []
 				}
 
@@ -173,10 +175,10 @@ express_app.post("/createpostreply", async (req, res) => {
 				newFnd.messages.push({
 					body: req.body.replyBody,
 					author: req.cookies.username,
-					created: new Date()
+					created: curDate
 				});
 				
-				await Post.findOneAndUpdate({ id: fnd.id }), newFnd;
+				await Post.findOneAndUpdate({ id: fnd.id }, newFnd);
 			} else {
 				res.sendStatus(404);
 				return;
