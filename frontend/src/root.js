@@ -56,7 +56,7 @@ export default function Root() {
             <main class="bg-image min-vh-100">
                 <nav class="navbar navbar-expand-sm bd-blue-1t">
                     <div class="container-sm text-center">
-                        <a class="navbar-brand" href=".">App</a>
+                        <a class="navbar-brand" href=".">Forum</a>
                         <AccountShow/>
                         <LoginOutButton/>
                     </div>

@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
 
-const { data_posts } = require('./data.js');
+const data_posts = require('./data.js');
 
 const express_app = express();
 express_app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
@@ -276,7 +276,7 @@ async function init() {
 	await mongoose.connect("mongodb://127.0.0.1:27017/?directConnection=true");
 	await Post.deleteMany({});
 	await User.deleteMany({});
-	await Post.insertMany(data_posts.slice(0, 27));
+	await Post.insertMany(data_posts());
 }
 init().catch((err) => console.log(err));
 
