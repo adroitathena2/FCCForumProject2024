@@ -1,6 +1,6 @@
-module.exports = function data_posts() {
+module.exports = function data_posts(count) {
 	let posts = [];
-	for (var i = 1; i <= 24; i++) {
+	for (var i = 1; i <= count; i++) {
 		let date = new Date("2024-01-" + i);
 
 		let post = {
